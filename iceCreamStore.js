@@ -35,3 +35,16 @@ let flavorDistribution = transactions.reduce((acc, curr) => {
 }, {}); // { Chocolate: 1, Vanilla: 3, Mint Chip: 1, Raspberry: 1, StrawBerry: 1 }
 
 console.log(flavorDistribution);
+
+let mostSoldFlavor = Object.keys(flavorDistribution).reduce(
+  (maxFlavor, flavor) => {
+    // 가장 많이 팔린 아이스크림을 찾아냄
+    if (flavorDistribution[flavor] > flavorDistribution[maxFlavor]) {
+      return flavor;
+    }
+    return maxFlavor;
+  },
+  Object.keys(flavorDistribution)[0]
+); // 초기값은 첫 번째 키로 설정
+
+console.log(`The most sold ice cream flavor is: ${mostSoldFlavor}`);
