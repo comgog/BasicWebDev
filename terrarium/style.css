@@ -28,20 +28,17 @@ body {
   padding: 10px;
   height: 100vh;
 }
-.plant-holder {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: auto;
-  margin-bottom: 20px;
-}
 
+.plant-holder {
+  position: relative;
+  height: 13%;
+  left: -10px;
+}
 .plant {
-  height: auto;
-  max-width: 100%;
-  max-height: 80px;
+  position: absolute;
+  max-width: 150%;
+  max-height: 150%;
+  z-index: 2;
 }
 
 #terrarium {
