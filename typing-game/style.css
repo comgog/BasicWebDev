@@ -1,0 +1,136 @@
+.highlight {
+  background-color: yellow;
+}
+.error {
+  background-color: lightcoral;
+  border: red;
+}
+/* 기본 스타일 설정 */
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #4b6cb7, #182848);
+  color: #ffffff;
+  text-align: center;
+  margin: 0;
+  padding: 20px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 타이틀 스타일 */
+h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #ffdd57;
+  text-transform: uppercase;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+}
+
+/* 문장 설명 */
+p {
+  font-size: 1.2rem;
+  line-height: 1.5;
+  margin-bottom: 30px;
+}
+
+/* Quote 영역 스타일 */
+#quote {
+  font-size: 1.5rem;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  width: 80%;
+  color: #ffdd57;
+  font-style: italic;
+}
+
+/* Highlight 된 단어 */
+.highlight {
+  background-color: #ffdd57;
+  color: #182848;
+  padding: 2px 5px;
+  border-radius: 5px;
+}
+
+/* 메시지 표시 스타일 */
+#message {
+  font-size: 1.3rem;
+  color: #ffdd57;
+  margin-top: 20px;
+  font-weight: bold;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+/* 입력 필드와 버튼 스타일 */
+input[type="text"] {
+  font-size: 1.5rem;
+  padding: 10px;
+  width: 300px;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin-right: 10px;
+}
+
+input[type="text"]:focus {
+  outline: none;
+  box-shadow: 0 0 8px 2px #ffdd57;
+}
+
+/* 입력 필드 오류 시 스타일 */
+input[type="text"].error {
+  border: 2px solid #e74c3c;
+  box-shadow: 0 0 8px 2px #e74c3c;
+}
+
+/* 버튼 스타일 */
+button {
+  font-size: 1.5rem;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  background-color: #ffdd57;
+  color: #182848;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #f1c40f;
+}
+
+button:active {
+  background-color: #e67e22;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* 반응형 스타일 */
+@media (max-width: 600px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  input[type="text"],
+  button {
+    font-size: 1.2rem;
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  #quote {
+    font-size: 1.2rem;
+  }
+}
+button:disabled {
+  background-color: #bdc3c7;
+  color: #7f8c8d;
+  cursor: not-allowed;
+  box-shadow: none;
+}
