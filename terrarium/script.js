@@ -21,33 +21,34 @@ let topPlant = "plant1";
 function dragElement(terrariumElement) {
   let pos1 = 0,
     pos2 = 0,
-    pos3 = 0,
-    pos4 = 0;
-  terrariumElement.onpointerdown = pointerDrag;
+    prevX = 0,
+    prevY = 0;
+  terrariumElement.setAttribute("dragable", true);
+
+  terrariumElement.addEventListener("dragstart", pointerDragStart);
+  terrariumElement.addEventListener("drag", pointerDrag);
+  terrariumElement.addEventListener("dragover", (e) => {
+    e.preventDefault();
+  });
+  terrariumElement.addEventListener("dragend", (e) => {
+    e.preventDefault();
+  });
+
+  terrariumElement.addEventListener("dblclick", bringFront);
 
   function pointerDrag(e) {
-    e.preventDefault();
-    console.log(e);
-    pos3 = e.clientX;
-    pos4 = e.clientY;
-    document.onpointermove = elementDrag;
-    document.onpointerup = stopElementDrag;
-    document.ondblclick = bringFront;
-  }
-
-  function elementDrag(e) {
-    pos1 = pos3 - e.clientX;
-    pos2 = pos4 - e.clientY;
-    pos3 = e.clientX;
-    pos4 = e.clientY;
-    console.log(pos1, pos2, pos3, pos4);
+    pos1 = prevX - e.clientX;
+    pos2 = prevY - e.clientY;
+    prevX = e.clientX;
+    prevY = e.clientY;
+    console.log(pos1, pos2, prevX, prevY);
     terrariumElement.style.top = terrariumElement.offsetTop - pos2 + "px";
     terrariumElement.style.left = terrariumElement.offsetLeft - pos1 + "px";
   }
 
-  function stopElementDrag() {
-    document.onpointerup = null;
-    document.onpointermove = null;
+  function pointerDragStart(e) {
+    prevX = e.clientX;
+    prevY = e.clientY;
   }
 
   function bringFront() {
