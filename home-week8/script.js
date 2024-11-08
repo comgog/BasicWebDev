@@ -35,9 +35,27 @@ document.getElementById("start").addEventListener("click", () => {
   startButton.disabled = true;
 });
 
+let isTyping = null;
 typedValueElement.addEventListener("input", () => {
   const currentWord = words[wordIndex];
   const typedValue = typedValueElement.value;
+
+  if (isTyping !== null) {
+    clearTimeout(isTyping);
+    typedValueElement.classList.remove("animated");
+    isTyping = null;
+    setTimeout(() => {
+      typedValueElement.classList.add("animated");
+    }, 10);
+  } else {
+    typedValueElement.classList.add("animated");
+  }
+
+  isTyping = setTimeout(() => {
+    typedValueElement.classList.remove("animated");
+    isTyping = null;
+  }, 500);
+
   if (typedValue === currentWord && wordIndex === words.length - 1) {
     const elapsedTime = new Date().getTime() - startTime;
     const message = `CONGRATULATIONS! You finished in ${
@@ -46,6 +64,8 @@ typedValueElement.addEventListener("input", () => {
     messageElement.innerText = message;
     typedValueElement.disabled = true;
     startButton.disabled = false;
+    showResultModal(elapsedTime / 1000);
+    typedValueElement.classList.remove("error");
   } else if (typedValue.endsWith(" ") && typedValue.trim() === currentWord) {
     //
     typedValueElement.value = "";
@@ -54,9 +74,39 @@ typedValueElement.addEventListener("input", () => {
       wordElement.className = "";
     }
     quoteElement.childNodes[wordIndex].className = "highlight";
+    typedValueElement.classList.remove("error");
   } else if (currentWord.startsWith(typedValue)) {
-    typedValueElement.className = "";
+    typedValueElement.classList.remove("error");
   } else {
-    typedValueElement.className = "error";
+    typedValueElement.classList.add("error");
+    requestAnimationFrame(() => {
+      typedValueElement.classList.remove("error");
+      typedValueElement.classList.add("error"); // 오류 클래스 다시 추가 (흔들림 효과 적용)
+    });
   }
+});
+
+// 최고 점수 불러오기
+let highScore = localStorage.getItem("highScore") || 0;
+
+// 게임 종료 후 결과 표시 및 모달 창 열기
+function showResultModal(finalScore) {
+  document.getElementById(
+    "final-score"
+  ).innerText = `이번 점수: ${finalScore}초`;
+
+  // 최고 점수 업데이트
+  if (!highScore || finalScore < highScore) {
+    highScore = finalScore;
+    localStorage.setItem("highScore", highScore);
+  }
+  document.getElementById("high-score").innerText = `최고 점수: ${highScore}초`;
+
+  // 모달 표시
+  document.getElementById("result-modal").classList.remove("hidden");
+}
+
+// 모달 닫기 버튼 이벤트 추가
+document.getElementById("close-modal").addEventListener("click", () => {
+  document.getElementById("result-modal").classList.add("hidden");
 });
