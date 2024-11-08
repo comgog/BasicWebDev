@@ -81,12 +81,35 @@ input[type="text"] {
 input[type="text"]:focus {
   outline: none;
   box-shadow: 0 0 8px 2px #ffdd57;
+  transition: box-shadow 0.3s ease;
 }
 
 /* 입력 필드 오류 시 스타일 */
 input[type="text"].error {
   border: 2px solid #e74c3c;
   box-shadow: 0 0 8px 2px #e74c3c;
+}
+
+.animated {
+  animation: shake 0.3s ease;
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  75% {
+    transform: translateX(-5px);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }
 
 /* 버튼 스타일 */
@@ -133,4 +156,44 @@ button:disabled {
   color: #7f8c8d;
   cursor: not-allowed;
   box-shadow: none;
+}
+/* 모달 스타일 */
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #ffffff;
+  color: #182848;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  width: 80%;
+  max-width: 400px;
+  z-index: 1000;
+}
+
+.modal-content {
+  text-align: center;
+}
+
+.hidden {
+  display: none;
+}
+
+/* 모달 닫기 버튼 */
+button#close-modal {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  padding: 10px;
+  background-color: #ffdd57;
+  color: #182848;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button#close-modal:hover {
+  background-color: #f1c40f;
 }

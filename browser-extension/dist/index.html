@@ -22,14 +22,22 @@
       </div>
       <div class="inputdata">
         <label for="region">Region Name</label>
-        <input type="text" id="region" required class="region-name" />
+        <input type="text" id="region1" required class="region-name1" />
+      </div>
+      <div class="inputdata">
+        <label for="region">Region Name</label>
+        <input type="text" id="region2" required class="region-name2" />
+      </div>
+      <div class="inputdata">
+        <label for="region">Region Name</label>
+        <input type="text" id="region3" required class="region-name3" />
       </div>
       <div class="inputdata">
         <label for="api">Your API Key from tmrow</label>
         <input type="text" id="api" required class="api-key" />
       </div>
       <div class="submit-btn">
-        <button class="search-btn">Submit</button>
+        <button type="submit" class="search-btn">Submit</button>
       </div>
     </form>
 
@@ -38,7 +46,23 @@
       <div class="loading">loading...</div>
       <div class="errors"></div>
       <div class="data"></div>
-      <div class="result-container">
+      <div class="result-container1">
+        <p><strong>Region: </strong><span class="my-region"></span></p>
+        <p><strong>Carbon Usage: </strong><span class="carbon-usage"></span></p>
+        <p>
+          <strong>Fossil Fuel Percentage: </strong
+          ><span class="fossil-fuel"></span>
+        </p>
+      </div>
+      <div class="result-container2">
+        <p><strong>Region: </strong><span class="my-region"></span></p>
+        <p><strong>Carbon Usage: </strong><span class="carbon-usage"></span></p>
+        <p>
+          <strong>Fossil Fuel Percentage: </strong
+          ><span class="fossil-fuel"></span>
+        </p>
+      </div>
+      <div class="result-container3">
         <p><strong>Region: </strong><span class="my-region"></span></p>
         <p><strong>Carbon Usage: </strong><span class="carbon-usage"></span></p>
         <p>
@@ -48,5 +72,6 @@
       </div>
       <button class="clear-btn">Change region</button>
     </div>
+    <script src="main.js"></script>
   </body>
 </html>
